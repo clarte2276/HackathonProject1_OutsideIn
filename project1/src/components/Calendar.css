@@ -1,0 +1,98 @@
+@import 'react-calendar/dist/Calendar.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&display=swap');
+
+.Cal {
+  width: 450px;
+  padding-top: 67px;
+}
+
+.react-calendar {
+  width: 480px;
+  height: 323px;
+  border-radius: 30px;
+  border-color: transparent;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: rgb(184, 220, 184);
+}
+
+.react-calendar__navigation {
+  background: rgb(184, 220, 184);
+  border-bottom: 3px solid rgb(199, 199, 199);
+  height: 50px;
+  border-radius: 20px 20px 0 0;
+}
+
+.react-calendar__navigation span {
+  font-size: 23px;
+  font-weight: 600;
+  color: black;
+}
+
+.react-calendar__navigation__label {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: rgb(171, 240, 180);
+  border-radius: 20px 20px 0 0;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: rgb(171, 240, 180);
+  border-radius: 20px 20px 0 0;
+}
+
+.react-calendar__month-view {
+  padding: 2px 23px;
+}
+
+.react-calendar__month-view abbr {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.react-calendar__month-view__weekdays {
+  margin-bottom: 5px;
+}
+
+.react-calendar__month-view__weekdays abbr {
+  font-weight: 700;
+}
+
+.react-calendar__tile {
+  text-align: center;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__tile--active {
+  background: rgba(32, 178, 100, 0.71);
+  border-radius: 50%;
+}
+
+.react-calendar__tile--now {
+  background: rgba(49, 106, 43, 0.696);
+  border-radius: 50%;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: rgba(32, 178, 100, 0.71);
+  border-radius: 50%;
+}
+
+abbr[title] {
+  text-decoration: none;
+  font-size: 1.05rem;
+}

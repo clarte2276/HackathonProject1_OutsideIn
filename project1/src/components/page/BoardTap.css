@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=IBM+Plex+Sans+KR&display=swap');
+
+* {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.Boardtop {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.active-button,
+.inactive-button {
+  text-decoration: none;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10%;
+}
+
+.active-button {
+  background-color: rgb(39, 39, 39);
+  color: white;
+}
+
+.inactive-button {
+  color: gray;
+  background-color: rgb(231, 231, 231);
+}
+
+.Boardbar {
+  margin: 50px 0px;
+}
+
+.table_title {
+  text-align: left;
+  color: rgb(48, 145, 6);
+}
+
+.newboardButton {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(39, 39, 39);
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.newboard {
+  display: flex;
+  justify-content: right;
+  margin: 25px 0px;
+  width: 85%;
+}
+
+.boardmain_body {
+  margin-bottom: 10px;
+}
+
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
+  /* background-color: rgba(0, 0, 0, 0.677) !important;
+  color: white !important; */
+  border-style: none !important;
+}
+
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: rgb(0, 0, 0) !important;
+  color: white !important;
+  border-radius: 18%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
