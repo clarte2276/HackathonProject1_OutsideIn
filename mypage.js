@@ -5,7 +5,7 @@ const db_config = require("./config/db_config.json");
 const app = express();
 const router = express.Router();
 
-// Database connection pool
+// Database connection poolasdadas
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: db_config.host,
