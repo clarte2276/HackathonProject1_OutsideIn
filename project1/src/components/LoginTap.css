@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.LoginPage {
+  background-color: rgb(220, 220, 220);
+  border-radius: 20px;
+  font-size: 62.5%;
+  padding: 15px 20px;
+  margin: auto;
+  margin-left: 10%;
+  width: 25rem;
+  height: 30rem;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  box-shadow: 0px 10px 10px -5px rgba(71, 69, 69, 0.586);
+  position: relative;
+}
+
+.LoginPage h1 {
+  padding-left: 8%;
+  padding-top: 2%;
+  font-size: 1.8rem;
+  font-family: 'Rubik', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  margin-bottom: 25px;
+}
+
+.LoginPage input {
+  width: 20rem;
+  height: 7rem;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 8%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.LoginPage input::placeholder {
+  color: rgb(130, 127, 127);
+  font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.loginBtn,
+.signupBtn {
+  display: block;
+  position: relative;
+  float: left;
+  width: 180px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  text-align: center;
+  line-height: 55px;
+  font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.loginBtn {
+  color: white;
+  background-color: #068d57;
+  border-radius: 10px;
+  border-style: none;
+  transition: all 0.2s;
+  margin-top: 35px;
+}
+
+.loginBtn:hover {
+  background: #1c6e4d;
+}
+
+.signupBtn {
+  color: rgb(130, 127, 127);
+  background-color: transparent;
+  border-style: none;
+}
+
+.btnContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
+}
+
+.LoginPage,
+.btnContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.loginImg {
+  position: absolute;
+  bottom: 10px;
+  left: 100%;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}

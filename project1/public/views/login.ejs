@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/LoginTap.css" />
+  </head>
+  <body>
+    <div class="LoginPage">
+      <h1>Log in</h1>
+      <form action="/process/login" method="post">
+        <div class="btnContent">
+          <input type="text" name="id" placeholder="아이디" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            required
+          />
+          <br />
+          <button type="submit" class="loginBtn">로그인</button>
+          <br />
+          <button class="signupBtn">
+            <a href="/signup" class="signupLink">회원가입</a>
+          </button>
+        </div>
+      </form>
+      <img class="loginImg" src="/images/loginpage.png" alt="" />
+    </div>
+  </body>
+</html>

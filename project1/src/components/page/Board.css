@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=IBM+Plex+Sans+KR&display=swap');
+
+.Board_all {
+  width: 555px;
+  margin-top: 30px;
+  padding-top: 15px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 1.5%;
+}
+
+.Board_title_body {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.1em;
+  background-color: rgb(231, 231, 231);
+  margin: 20px 25px;
+  padding: 0px 30px;
+  padding-bottom: 25px;
+  clip-path: inset(1% 1% 1% 1% round 10px);
+}
+
+.Board_body1 {
+  padding-top: 2px;
+}
+
+.Board_name {
+  text-decoration: none;
+  color: black;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.25em;
+  padding: 35px;
+}
+
+h3 {
+  margin-bottom: 7px;
+}
+
+.Board_body {
+  color: rgb(98, 98, 98);
+  padding-bottom: 7px;
+}
+
+.Board_body1:after {
+  content: '';
+  display: flex;
+  justify-content: center;
+  width: 555px;
+  border-bottom: 2.7px solid rgb(182, 182, 182);
+  margin: auto;
+  margin-top: 10px;
+}
