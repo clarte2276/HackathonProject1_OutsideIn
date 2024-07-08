@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// 로그인 상태 확인 라우팅asd
+// 로그인 상태 확인 라우팅
 router.get("/check-login", (req, res) => {
   console.log("/check-login 호출됨"); // 디버깅용 로그
   if (req.session.user) {
