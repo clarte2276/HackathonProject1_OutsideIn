@@ -24,3 +24,5 @@ yarn-error.log*
 
 # database config
 db_config.json
+# config folder
+/config/
