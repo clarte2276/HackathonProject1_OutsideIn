@@ -7,8 +7,6 @@ const path = require("path");
 const app = express();
 const session = require("express-session");
 
-app.use(express.static(path.join(__dirname, "public")));
-
 // URL을 인코딩하는 코드
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,8 +24,6 @@ const pool = mysql.createPool({
   port: db_config.port,
   debug: false,
 });
-
-router.use(express.static(path.join(__dirname, "public")));
 
 // 게시글 목록 조회 (GET)
 router.get("/joy", (req, res) => {
