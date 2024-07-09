@@ -36,6 +36,7 @@ function MypageTap() {
       setFirstName(userData.Firstname);
       setUsernickname(userData.nickname);
       setUsername(userData.id); // 아이디 값 변경 불가
+      setPassword(userData.password);
       setBirthdate(userData.birth);
       setGender(userData.gender);
       setState(userData.state);
@@ -87,14 +88,15 @@ function MypageTap() {
         lastName,
         firstName,
         nickname: usernickname,
+        password: password,
         birth: birthdate,
         gender,
         state,
       };
 
-      if (password) {
-        updateData.password = password;
-      }
+      // if (password) {
+      //   updateData.password = password;
+      // }
 
       const response = await axios.post('/process/update_user', updateData);
 
@@ -112,14 +114,13 @@ function MypageTap() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('/logout', {
-        method: 'POST',
+      const response = await axios.post('/logout', null, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert('로그아웃 되었습니다.');
         navigate('/'); // 로그아웃 후 메인 페이지로 이동하기
       } else {
@@ -183,7 +184,7 @@ function MypageTap() {
             <p className="a_pw">
               비밀번호
               <input
-                type="password"
+                type="text"
                 placeholder="비밀번호"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
