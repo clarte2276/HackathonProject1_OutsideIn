@@ -14,6 +14,7 @@ import JoyBoard from './components/page/JoyBoard.js';
 import SadnessBoard from './components/page/SadnessBoard.js';
 import AnxietyBoard from './components/page/AnxietyBoard.js';
 import FearBoard from './components/page/FearBoard.js';
+import Chat from './components/page/Chat.js';
 
 const Home = () => {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/anxiety" element={<AnxietyBoard />} />
           <Route path="/Fear" element={<FearBoard />} />
           <Route path="/joy/:page" component={JoyBoard} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </div>
     </BrowserRouter>
