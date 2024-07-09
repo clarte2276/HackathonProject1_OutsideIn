@@ -57,7 +57,7 @@ input[type='checkbox'] {
   list-style-type: none;
   background-color: rgb(218, 218, 218);
   border-radius: 15px;
-  width: 730px;
+  width: 200%;
   padding-top: 15px;
   padding-left: 20px;
   padding-right: 20px;

@@ -1,4 +1,4 @@
-@import "normalize.css";
+@import 'normalize.css';
 
 body,
 html {
@@ -10,7 +10,7 @@ html {
 .Board_layout {
   display: flex;
   margin: 0px 165px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   justify-content: space-between;
 }
 

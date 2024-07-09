@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&display=swap');
 
 .Cal {
-  width: 450px;
+  width: 38%;
   padding-top: 67px;
 }
 
 .react-calendar {
-  width: 480px;
-  height: 323px;
+  width: 200%;
+  height: 96%;
   border-radius: 30px;
   border-color: transparent;
   font-family: 'Nanum Gothic', sans-serif;
