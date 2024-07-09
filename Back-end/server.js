@@ -58,10 +58,12 @@ app.use(express.static(path.join(__dirname, "public")));
 const indexRoutes = require("./index");
 const mypageRoutes = require("./mypage");
 const postRoutes = require("./post");
+const chatlistRoutes = require("./chatlist");
 
 app.use("/", indexRoutes);
 app.use("/", mypageRoutes);
 app.use("/", postRoutes);
+app.use("/", chatlistRoutes);
 
 // 로그인 상태 확인 라우팅
 app.get("/check-login", (req, res) => {

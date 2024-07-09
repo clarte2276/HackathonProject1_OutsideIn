@@ -120,7 +120,7 @@ function MypageTap() {
         },
       });
 
-      if (response.status === 200) {
+      if (response.ok) {
         alert('로그아웃 되었습니다.');
         navigate('/'); // 로그아웃 후 메인 페이지로 이동하기
       } else {
