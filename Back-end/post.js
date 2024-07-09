@@ -3,14 +3,6 @@ const mysql = require("mysql");
 const db_config = require("./config/db_config.json");
 const moment = require("moment");
 const router = express.Router();
-const path = require("path");
-const app = express();
-const session = require("express-session");
-
-// URL을 인코딩하는 코드
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "../Front-end/build")));
 
 const pool = mysql.createPool({
   connectionLimit: 10,

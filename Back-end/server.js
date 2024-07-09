@@ -8,10 +8,6 @@ const db_config = require("./config/db_config.json");
 
 const app = express();
 
-// EJS 설정 추가
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../Front-end/public/views"));
-
 // MySQL 세션 스토어 옵션
 const sessionStoreOptions = {
   host: db_config.host,

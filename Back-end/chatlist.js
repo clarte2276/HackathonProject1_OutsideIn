@@ -1,15 +1,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const db_config = require("./config/db_config.json");
-const moment = require("moment");
 const router = express.Router();
-const path = require("path");
-const app = express();
-const session = require("express-session");
-
-// URL을 인코딩하는 코드
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 const pool = mysql.createPool({
   connectionLimit: 10,
@@ -23,14 +15,25 @@ const pool = mysql.createPool({
 
 // 게시글 목록 조회 (GET)
 router.get("/process/chat", (req, res) => {
-  pool.query("SELECT nickname, state FROM users", (error, results) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send("서버 오류");
-    } else {
-      res.json(results);
+  if (!req.session.user) {
+    return res.status(401).send("로그인이 필요합니다.");
+  }
+
+  const currentUserNickname = req.session.user.nickname;
+
+  pool.query(
+    "SELECT roomId, nickname, state FROM users WHERE nickname != ?",
+    [currentUserNickname],
+    (error, results) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send("서버 오류");
+      } else {
+        console.log(results); // 응답 데이터 확인을 위한 로그 추가
+        res.json(results);
+      }
     }
-  });
+  );
 });
 
 module.exports = router;
