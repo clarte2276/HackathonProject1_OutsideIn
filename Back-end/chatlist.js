@@ -23,12 +23,12 @@ const pool = mysql.createPool({
 
 // 게시글 목록 조회 (GET)
 router.get("/process/chat", (req, res) => {
-  pool.query("SELECT nickname FROM users", (error, results) => {
+  pool.query("SELECT nickname, state FROM users", (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send("서버 오류");
     } else {
-      res.json(results); // JSON 형식으로 응답
+      res.json(results);
     }
   });
 });
