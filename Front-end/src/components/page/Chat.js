@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import CommonTable from "../table/CommonTable";
-import CommonTableColumn from "../table/CommonTableColumn";
-import CommonTableRow from "../table/CommonTableRow";
-import Boardbar from "./Boardbar";
-import BoardMain from "./BoardMain";
-import CustomPagination from "./Pagination";
-import NewBoardButton from "./NewBoardButton";
-import "./BoardTap.css";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import CommonTable from '../table/CommonTable';
+import CommonTableColumn from '../table/CommonTableColumn';
+import CommonTableRow from '../table/CommonTableRow';
+import Boardbar from './Boardbar';
+import BoardMain from './BoardMain';
+import CustomPagination from './Pagination';
+import NewBoardButton from './NewBoardButton';
+import './BoardTap.css';
+import axios from 'axios';
+import userImg from '../images/userImg.jpg';
 
 const Chat = () => {
   const [dataList, setDataList] = useState([]);
@@ -18,12 +19,12 @@ const Chat = () => {
   useEffect(() => {
     // 백엔드에서 게시글 목록을 가져옴
     axios
-      .get("/process/chat")
+      .get('/process/chat')
       .then((response) => {
         setDataList(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the posts!", error);
+        console.error('There was an error fetching the posts!', error);
       });
   }, []);
 
@@ -38,22 +39,16 @@ const Chat = () => {
   return (
     <>
       <div className="Boardtop">
-        <BoardMain
-          title="기쁨이"
-          body="본인의 챌린지 및 치료 후기를 적어주세요!"
-        ></BoardMain>
+        <BoardMain title="기쁨이" body="본인의 챌린지 및 치료 후기를 적어주세요!"></BoardMain>
         <div className="Boardbar">
           <Boardbar />
         </div>
       </div>
-      <CommonTable headersName={["닉네임"]}>
+      <CommonTable headersName={['닉네임']}>
         {currentPosts.map((item, index) => (
           <CommonTableRow key={index}>
             <CommonTableColumn>
-              <Link
-                to={`/PostView/${item.no}`}
-                style={{ textDecoration: "none" }}
-              >
+              <Link to={`/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
                 <div className="table_title">{item.title}</div>
               </Link>
             </CommonTableColumn>
@@ -71,6 +66,7 @@ const Chat = () => {
           onPageChange={handlePageChange}
         />
       </div>
+      <img className="userImg" src={userImg} alt=""></img>
     </>
   );
 };
