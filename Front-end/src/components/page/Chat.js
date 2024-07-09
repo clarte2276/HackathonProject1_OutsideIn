@@ -21,6 +21,7 @@ const Chat = () => {
     axios
       .get('/process/chat')
       .then((response) => {
+        console.log(response.data); // Add this line to log the response data
         setDataList(response.data);
       })
       .catch((error) => {
@@ -30,7 +31,9 @@ const Chat = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = dataList.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = Array.isArray(dataList)
+    ? dataList.slice(indexOfFirstPost, indexOfLastPost)
+    : [];
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -53,8 +56,6 @@ const Chat = () => {
               </Link>
             </CommonTableColumn>
             <CommonTableColumn>{item.nickname}</CommonTableColumn>
-            <CommonTableColumn>{item.created_date}</CommonTableColumn>
-            <CommonTableColumn>{item.viewCount}</CommonTableColumn>
           </CommonTableRow>
         ))}
       </CommonTable>
