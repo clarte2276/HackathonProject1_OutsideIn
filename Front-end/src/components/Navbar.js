@@ -46,9 +46,11 @@ function Navbar() {
         <Link className="navbarMenu" to="/process/chat">
           Chat
         </Link>
-        <Link className="navbarMenu" to="/MyPage">
-          MyPage
-        </Link>
+        <form onSubmit={checkLogin} className="icon-link-form">
+          <button type="submit" className="navbarMenu">
+            MyPage
+          </button>
+        </form>
       </div>
       <form onSubmit={checkLogin} className="icon-link-form">
         <button type="submit" className="icon-link-button">
