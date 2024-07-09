@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 });
 
 // 게시글 목록 조회 (GET)
-router.get("/joy", (req, res) => {
+router.post("/joy", (req, res) => {
   pool.query(
     "SELECT no, title, nickname, created_date, viewCount FROM board",
     (error, results) => {

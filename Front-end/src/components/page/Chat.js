@@ -38,7 +38,7 @@ const Chat = () => {
 
   useEffect(() => {
     axios
-      .get("/process/chat")
+      .post("/process/chat")
       .then((response) => {
         console.log(response.data); // 응답 데이터 확인을 위한 로그 추가
         setDataList(response.data);

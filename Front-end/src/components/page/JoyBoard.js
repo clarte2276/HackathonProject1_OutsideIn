@@ -18,8 +18,9 @@ const JoyBoard = () => {
   useEffect(() => {
     // 백엔드에서 게시글 목록을 가져옴
     axios
-      .get("/joy")
+      .post("/joy")
       .then((response) => {
+        console.log("응답 데이터:", response.data); // 응답 데이터 출력
         setDataList(response.data);
       })
       .catch((error) => {

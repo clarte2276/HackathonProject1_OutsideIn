@@ -14,7 +14,7 @@ const pool = mysql.createPool({
 });
 
 // 게시글 목록 조회 (GET)
-router.get("/process/chat", (req, res) => {
+router.post("/process/chat", (req, res) => {
   if (!req.session.user) {
     return res.status(401).send("로그인이 필요합니다.");
   }

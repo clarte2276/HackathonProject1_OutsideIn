@@ -127,14 +127,13 @@ router.post("/process/update_user", checkLogin, async (req, res) => {
 });
 
 // 로그아웃 구현
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.log("세션 종료 중 오류 발생:", err);
       return res.status(500).send("로그아웃 중 오류가 발생했습니다.");
     }
     res.clearCookie("session_cookie_name");
-    res.redirect("/");
   });
 });
 
