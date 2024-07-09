@@ -134,6 +134,7 @@ router.post("/logout", (req, res) => {
       return res.status(500).send("로그아웃 중 오류가 발생했습니다.");
     }
     res.clearCookie("session_cookie_name");
+    return res.status(200).send();
   });
 });
 
