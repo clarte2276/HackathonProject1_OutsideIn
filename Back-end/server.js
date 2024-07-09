@@ -10,7 +10,7 @@ const app = express();
 
 // EJS 설정 추가
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "project1/public/views"));
+app.set("views", path.join(__dirname, "../Front-end/public/views"));
 
 // MySQL 세션 스토어 옵션
 const sessionStoreOptions = {
@@ -51,7 +51,7 @@ app.use(
 );
 
 // 정적 파일 제공
-app.use(express.static(path.join(__dirname, "project1/build")));
+app.use(express.static(path.join(__dirname, "../Front-end/build")));
 app.use(express.static(path.join(__dirname, "public")));
 
 // 외부 라우터 파일 포함
@@ -197,7 +197,7 @@ app.post("/process/login", (req, res) => {
 
 // 나머지 모든 요청을 React 앱의 index.html로 리디렉션
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "project1/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../Front-end/build", "index.html"));
 });
 
 app.listen(3000, () => {
