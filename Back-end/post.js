@@ -10,10 +10,7 @@ const session = require("express-session");
 // URL을 인코딩하는 코드
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "project1/build")));
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "project1/build/index.html"));
-});
+app.use(express.static(path.join(__dirname, "../Front-end/build")));
 
 const pool = mysql.createPool({
   connectionLimit: 10,
