@@ -5,7 +5,7 @@ const db_config = require("./config/db_config.json");
 const app = express();
 const router = express.Router();
 
-// Database connection poolasdadas
+// Database connection poolㅁㄴㅇㅁㄴㅇㅁㅁㄴㅇ
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: db_config.host,
@@ -16,7 +16,7 @@ const pool = mysql.createPool({
   debug: false,
 });
 
-// 로그인 여부 확인 미들웨어
+// 로그인 여부 확인 미들웨어apda;sdk;
 const checkLogin = (req, res, next) => {
   if (req.session && req.session.user) {
     next();
