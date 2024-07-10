@@ -64,3 +64,15 @@
   height: 3rem;
   margin: 0rem;
 }
+
+.state_color.sadness {
+  text-shadow: 0px 0px 12px rgb(8, 72, 212, 0.73);
+}
+
+.state_color.anxiety {
+  text-shadow: 0px 0px 12px rgb(255, 145, 0, 0.73);
+}
+
+.state_color.fear {
+  text-shadow: 0px 0px 12px rgb(100, 18, 181, 0.73);
+}
