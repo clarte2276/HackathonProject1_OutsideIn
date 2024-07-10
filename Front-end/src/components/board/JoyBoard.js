@@ -15,7 +15,7 @@ const JoyBoard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
 
-  useEffect(() => {
+  const fetchData = () => {
     // 백엔드에서 게시글 목록을 가져옴
     axios
       .post('/joy')
@@ -26,7 +26,15 @@ const JoyBoard = () => {
       .catch((error) => {
         console.error('There was an error fetching the posts!', error);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const handlePostSave = (newPost) => {
+    setDataList([...dataList, newPost]);
+  };
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
