@@ -15,8 +15,7 @@ import SadnessBoard from './components/board/SadnessBoard.js';
 import AnxietyBoard from './components/board/AnxietyBoard.js';
 import FearBoard from './components/board/FearBoard.js';
 import Chat from './components/chat/Chat.js';
-import ChatService from './components/chat/ChatService.js';
-import SocketContext from './components/chat/ChatSocket.js';
+import Chatroom from './components/chat/Chatroom.js';
 
 const Home = () => {
   return (
@@ -40,28 +39,24 @@ const Home = () => {
 
 function App() {
   return (
-    <SocketContext.Provider>
-      <ChatService>
-        <BrowserRouter>
-          <div className="App">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/joy" element={<JoyBoard />} />
-              <Route path="/MyPage" element={<MypageTap />} />
-              <Route path="/LoginTap" element={<LoginTap />} />
-              <Route path="/Signup" element={<Signup />} />
-              <Route path="/sadness" element={<SadnessBoard />} />
-              <Route path="/anxiety" element={<AnxietyBoard />} />
-              <Route path="/Fear" element={<FearBoard />} />
-              <Route path="/joy/:page" component={JoyBoard} />
-              <Route path="/process/chat" element={<Chat />} />
-              <Route path="/Chatroom/:roomId" component={ChatService} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </ChatService>
-    </SocketContext.Provider>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/joy" element={<JoyBoard />} />
+          <Route path="/MyPage" element={<MypageTap />} />
+          <Route path="/LoginTap" element={<LoginTap />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/sadness" element={<SadnessBoard />} />
+          <Route path="/anxiety" element={<AnxietyBoard />} />
+          <Route path="/Fear" element={<FearBoard />} />
+          <Route path="/joy/:page" component={JoyBoard} />
+          <Route path="/process/chat" element={<Chat />} />
+          <Route path="/Chatroom/:roomId" element={<Chatroom />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

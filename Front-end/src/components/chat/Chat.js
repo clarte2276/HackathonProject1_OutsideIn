@@ -6,6 +6,7 @@ import CustomPagination from '../board/Pagination';
 import './Chat.css';
 import axios from 'axios';
 import userImg from '../images/userImg.jpg';
+import { openChatroomPopup } from './Popup';
 
 const Chat = () => {
   async function checkLogin(event) {
@@ -31,6 +32,7 @@ const Chat = () => {
       window.location.href = '/login';
     }
   }
+
   const [dataList, setDataList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5;
@@ -55,22 +57,6 @@ const Chat = () => {
     setCurrentPage(pageNumber);
   };
 
-  const openPopup = (roomId) => {
-    const url = `/Chatroom/${roomId}`;
-    const title = 'popup';
-    const status = 'toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=400,height=500,top=100,left=200';
-    const newWindow = window.open(url, title, status);
-
-    const form = document.createElement('form');
-    form.method = 'post';
-    form.action = url;
-    form.target = title;
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-  };
-
   return (
     <>
       <div className="chatTop">
@@ -87,7 +73,9 @@ const Chat = () => {
             </CommonTableColumn>
             <CommonTableColumn>{item.state}</CommonTableColumn>
             <CommonTableColumn>
-              <button onClick={() => openPopup(item.roomId)}>
+              <button onClick={() => openChatroomPopup(item.roomId)}>
+                {' '}
+                {/* 수정된 함수 호출 */}
                 <div>참여</div>
               </button>
             </CommonTableColumn>
@@ -101,7 +89,6 @@ const Chat = () => {
           onPageChange={handlePageChange}
         />
       </div>
-      {/* <img className="userImg" src={userImg} alt=""></img> */}
     </>
   );
 };
