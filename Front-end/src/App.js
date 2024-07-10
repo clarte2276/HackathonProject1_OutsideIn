@@ -26,12 +26,12 @@ const Home = () => {
         <CalendarFunc></CalendarFunc>
       </div>
       <div className="Board_layout">
-        <Board title="기쁨이 게시판" id="1"></Board>
-        <Board title="우울이 게시판" id="2"></Board>
+        <Board title="기쁨이 게시판" emotion="joy"></Board>
+        <Board title="우울이 게시판" emotion="sadness"></Board>
       </div>
       <div className="Board_layout">
-        <Board title="불안이 게시판" id="3"></Board>
-        <Board title="소심이 게시판" id="4"></Board>
+        <Board title="불안이 게시판" emotion="anxiety"></Board>
+        <Board title="소심이 게시판" emotion="fear"></Board>
       </div>
     </div>
   );
