@@ -14,6 +14,7 @@ import JoyBoard from './components/board/JoyBoard.js';
 import SadnessBoard from './components/board/SadnessBoard.js';
 import AnxietyBoard from './components/board/AnxietyBoard.js';
 import FearBoard from './components/board/FearBoard.js';
+import WriteJoy from './components/board/WriteJoy.js';
 import Chat from './components/chat/Chat.js';
 import Chatroom from './components/chat/Chatroom.js';
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/joy/:page" component={JoyBoard} />
           <Route path="/process/chat" element={<Chat />} />
           <Route path="/Chatroom/:roomId" element={<Chatroom />} />
+          <Route path="/BoardWrite/joy" element={<WriteJoy />} />
         </Routes>
       </div>
     </BrowserRouter>
