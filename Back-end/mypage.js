@@ -1,3 +1,5 @@
+//마이페이지 기능
+
 const express = require("express");
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
