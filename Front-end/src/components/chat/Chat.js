@@ -6,6 +6,7 @@ import CustomPagination from '../board/Pagination';
 import './Chat.css';
 import axios from 'axios';
 import userImg from '../images/userImg.jpg';
+import { openChatroomPopup } from './Popup';
 
 const Chat = () => {
   async function checkLogin(event) {
@@ -31,6 +32,7 @@ const Chat = () => {
       window.location.href = '/login';
     }
   }
+
   const [dataList, setDataList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5;
@@ -56,19 +58,8 @@ const Chat = () => {
   };
 
   const openPopup = (roomId) => {
-    const url = `/Chatroom/${roomId}`;
-    const title = 'popup';
-    const status = 'toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=400,height=500,top=100,left=200';
-    const newWindow = window.open(url, title, status);
-
-    const form = document.createElement('form');
-    form.method = 'post';
-    form.action = url;
-    form.target = title;
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    // openPopup 함수 추가
+    openChatroomPopup(roomId); // openChatroomPopup을 호출하도록 수정
   };
 
   return (
