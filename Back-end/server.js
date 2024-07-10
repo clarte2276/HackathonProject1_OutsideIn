@@ -57,11 +57,13 @@ const indexRoutes = require("./index");
 const mypageRoutes = require("./mypage");
 const postRoutes = require("./post");
 const chatlistRoutes = require("./chatlist");
+const chattingRoutes = require("./chatting");
 
 app.use("/", indexRoutes);
 app.use("/", mypageRoutes);
 app.use("/", postRoutes);
 app.use("/", chatlistRoutes);
+app.use("/", chattingRoutes);
 
 // 회원가입
 app.post("/process/signup", async (req, res) => {
@@ -185,6 +187,10 @@ app.post("/process/login", (req, res) => {
 
 // 나머지 모든 요청을 React 앱의 index.html로 리디렉션
 app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Front-end/build", "index.html"));
+});
+
+app.post('/Chatroom/:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, "../Front-end/build", "index.html"));
 });
 
