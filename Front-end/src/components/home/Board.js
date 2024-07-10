@@ -1,8 +1,24 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Board.css';
+import axios from 'axios';
 
 function Board(props) {
+  const [dataList, setDataList] = useState([]);
+
+  useEffect(() => {
+    // 백엔드에서 게시글 목록을 가져옴
+    axios
+      .post('/joy')
+      .then((response) => {
+        console.log('응답 데이터:', response.data); // 응답 데이터 출력
+        setDataList(response.data);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the posts!', error);
+      });
+  }, []);
+
   const getLinkClass = () => {
     switch (props.emotion) {
       case 'joy':
@@ -40,18 +56,27 @@ function Board(props) {
         </Link>
       </div>
       <div className="Board_title_body">
-        <div className="Board_body1">
-          <h3>이겨냈어!</h3>
-          <div className="Board_body_body">
-            너희도 할 수 있어<br></br>항상응원할게<br></br>…
-          </div>
-        </div>
-        <div className="Board_body2">
-          <h3>이겨냈어!</h3>
-          <div className="Board_body_body">
-            너희도 할 수 있어<br></br>항상응원할게<br></br>…
-          </div>
-        </div>
+        {dataList.length > 0 ? (
+          (() => {
+            const items = [];
+            for (let i = 0; i < Math.min(2, dataList.length); i++) {
+              items.push(
+                <div key={i} className="Board_body">
+                  <h3>{dataList[i].title}</h3>
+                  <div className="Board_body_body">
+                    {dataList[i].nickname.length > 10
+                      ? `${dataList[i].nickname.substring(0, 10)}...`
+                      : dataList[i].nickname}
+                  </div>
+                  <div>{i === 0 && <div className="BorderLine"></div>}</div>
+                </div>
+              );
+            }
+            return items;
+          })()
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </div>
   );

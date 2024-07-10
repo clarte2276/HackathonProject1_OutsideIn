@@ -81,12 +81,13 @@
 }
 
 h3 {
-  margin-bottom: 7px;
+  margin-bottom: 15px;
+  color: black;
 }
 
 .Board_body {
   color: rgb(98, 98, 98);
-  padding-bottom: 7px;
+  padding: 10px 0px;
 }
 
 .Board_body1:after {
@@ -97,4 +98,9 @@ h3 {
   border-bottom: 2.7px solid rgb(182, 182, 182);
   margin: auto;
   margin-top: 10px;
+}
+
+.BorderLine {
+  border-top: 3px solid #969696;
+  margin-top: 30px;
 }

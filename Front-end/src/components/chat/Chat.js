@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import CommonTable2 from "./chatList/CommonTable2";
-import CommonTableColumn2 from "./chatList/CommonTableColumn2";
-import CommonTableRow2 from "./chatList/CommonTableRow2";
-import CustomPagination from "../board/Pagination";
-import "./Chat.css";
-import axios from "axios";
-import userImg from "../images/userImg.jpg";
-import { openChatroomPopup } from "./Popup";
+import React, { useState, useEffect } from 'react';
+import CommonTable2 from './chatList/CommonTable2';
+import CommonTableColumn2 from './chatList/CommonTableColumn2';
+import CommonTableRow2 from './chatList/CommonTableRow2';
+import CustomPagination from '../board/Pagination';
+import './Chat.css';
+import axios from 'axios';
+import userImg from '../images/userImg.jpg';
+import { openChatroomPopup } from './Popup';
 
 const Chat = () => {
   const [dataList, setDataList] = useState([]);
@@ -15,21 +15,19 @@ const Chat = () => {
 
   useEffect(() => {
     axios
-      .post("/process/chat")
+      .post('/process/chat')
       .then((response) => {
         console.log(response.data);
         setDataList(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the posts!", error);
+        console.error('There was an error fetching the posts!', error);
       });
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = Array.isArray(dataList)
-    ? dataList.slice(indexOfFirstPost, indexOfLastPost)
-    : [];
+  const currentPosts = Array.isArray(dataList) ? dataList.slice(indexOfFirstPost, indexOfLastPost) : [];
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -56,10 +54,10 @@ const Chat = () => {
     <>
       <div className="chatTop">
         <h1>채팅 대기실</h1>
-        <div className="chatmain_body">이곳은 1:1 채팅 대기실입니다.</div>
+        <div className="chatMain_body">이곳은 1:1 채팅 대기실입니다.</div>
         <div>대화에 참여해 새로운 만남을 경험해 보세요!</div>
       </div>
-      <CommonTable2 headersName={["닉네임", "상태", "대화하기"]}>
+      <CommonTable2 headersName={['닉네임', '상태', '대화하기']}>
         {currentPosts.map((item, index) => (
           <CommonTableRow2 key={index}>
             <CommonTableColumn2>
