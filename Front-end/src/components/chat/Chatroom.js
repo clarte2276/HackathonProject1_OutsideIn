@@ -76,15 +76,15 @@
 
 // export default Chatroom;
 
-
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import './Chatroom.css';
 
 const Chatroom = () => {
   const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState('');
   const [roomMessages, setRoomMessages] = useState([]);
 
   useEffect(() => {
@@ -92,13 +92,11 @@ const Chatroom = () => {
     const fetchMessages = async () => {
       try {
         console.log(`Fetching messages for roomId: ${roomId}`);
-        const response = await axios.get(
-          `http://localhost:3000/chatrooms/${roomId}/messages`
-        );
-        console.log("Fetched messages:", response.data);
+        const response = await axios.get(`http://localhost:3000/chatrooms/${roomId}/messages`);
+        console.log('Fetched messages:', response.data);
         setMessages(response.data);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error('Error fetching messages:', error);
       }
     };
 
@@ -108,20 +106,18 @@ const Chatroom = () => {
   useEffect(() => {
     if (messages.length) {
       setRoomMessages(
-        messages.filter(
-          (msg) => msg.sender_id === parseInt(roomId) || msg.receiver_id === parseInt(roomId)
-        )
+        messages.filter((msg) => msg.sender_id === parseInt(roomId) || msg.receiver_id === parseInt(roomId))
       );
     }
   }, [messages, roomId]);
 
   const handleSendMessage = async () => {
-    if (newMessage.trim() === "") return;
+    if (newMessage.trim() === '') return;
     try {
       const sender_id = 1; // 실제 사용자 roomId로 대체해야 합니다. //직접 지정
       const receiver_id = parseInt(roomId); // 현재 대화 상대방의 roomId로 사용됩니다.
 
-      console.log("Sending message:", { sender_id, receiver_id, content: newMessage });
+      console.log('Sending message:', { sender_id, receiver_id, content: newMessage });
 
       // 백엔드에 새 메시지 보내기
       const response = await axios.post(`http://localhost:3000/chatrooms/${roomId}/messages`, {
@@ -130,7 +126,7 @@ const Chatroom = () => {
         content: newMessage,
       });
 
-      console.log("Response:", response);
+      console.log('Response:', response);
 
       // 메시지를 성공적으로 보낸 후 메시지 목록 업데이트
       setMessages((prevMessages) => [
@@ -141,32 +137,35 @@ const Chatroom = () => {
           content: newMessage,
         },
       ]);
-      setNewMessage("");
+      setNewMessage('');
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error('Error sending message:', error);
     }
   };
 
   return (
-    <div>
+    <div className="chattingRoom">
       <h2>Chatroom {roomId}</h2>
-      <div>
+      <div className="messageContent">
         {roomMessages.map((msg, index) => (
-          <p key={index}>{msg.content}</p>
+          <p key={index} className={msg.sender_id === 1 ? 'my-message' : 'other-message'}>
+            {msg.content}
+          </p>
         ))}
       </div>
-      <input
-        type="text"
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
-        placeholder="메시지를 입력하세요..."
-      />
-      <button onClick={handleSendMessage}>전송</button>
+      <div className="inputMessage">
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          placeholder="메시지를 입력하세요..."
+        />
+      </div>
+      <button onClick={handleSendMessage} className="sendmessageBtn">
+        전송
+      </button>
     </div>
   );
 };
 
 export default Chatroom;
-
-
-
