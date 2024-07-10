@@ -30,7 +30,7 @@ const FearBoard = () => {
 
   return (
     <>
-      <div className="Boardtop">
+      <div className="BoardTop">
         <BoardMain title="소심이" body="당신의 강박증상을 공유해주세요."></BoardMain>
         <div className="Boardbar">
           <Boardbar />

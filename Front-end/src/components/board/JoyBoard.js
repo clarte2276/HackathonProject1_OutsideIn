@@ -38,7 +38,7 @@ const JoyBoard = () => {
 
   return (
     <>
-      <div className="Boardtop">
+      <div className="BoardTop">
         <BoardMain title="기쁨이" body="본인의 챌린지 및 치료 후기를 적어주세요!"></BoardMain>
         <div className="Boardbar">
           <Boardbar />
