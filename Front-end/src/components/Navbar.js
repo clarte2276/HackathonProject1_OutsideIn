@@ -33,7 +33,7 @@ function Navbar() {
   return (
     <div className="navbar_all">
       <div className="OutsideIn">
-        <Link className="navbarMenu" to="/">
+        <Link className="navbarMenu_logo" to="/">
           <div>
             Outside<br></br>In&nbsp;
             <i className="icon-users" />
@@ -47,8 +47,8 @@ function Navbar() {
         <Link className="navbarMenu" to="/process/chat">
           Chat
         </Link>
-        <form onSubmit={checkLogin} className="icon-link-form">
-          <button type="submit" className="navbarMenu">
+        <form onSubmit={checkLogin} className="navbarMenu">
+          <button type="submit" className="mypage-button">
             MyPage
           </button>
         </form>

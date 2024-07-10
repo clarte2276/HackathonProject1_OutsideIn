@@ -5,27 +5,32 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 5px;
   background-color: rgb(255, 254, 249);
+  padding-bottom: 10px;
 }
 
 .OutsideIn {
-  width: 100px;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.8rem;
-  font-weight: 380;
-  font-style: normal;
-  margin-top: 13px;
-  margin-left: 25px;
+  width: 115px;
   letter-spacing: 1.6px;
+  margin-top: 20px;
+}
+
+.navbarMenu_logo {
+  color: black;
+  text-decoration: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar {
-  width: 650px;
+  width: 40%;
   background-color: rgb(255, 254, 249);
   padding: 15px 0px;
-  margin-top: 12px;
+  margin-top: 20px;
   margin-left: 280px;
   margin-right: 280px;
   text-align: right;
@@ -38,6 +43,7 @@
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 10px;
+  height: 32px;
   font-family: 'IBM Plex Sans KR', sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -81,11 +87,25 @@
   color: black;
   width: 100px;
   margin-top: 25px;
-  margin-right: 15px;
   display: flex;
   justify-content: center;
 }
 
 .icon-link {
   text-decoration: none;
+}
+
+.icon-link-form {
+  height: 50px;
+}
+
+.mypage-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.1rem;
 }
