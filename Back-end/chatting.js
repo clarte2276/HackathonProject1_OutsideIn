@@ -17,7 +17,7 @@ const pool = mysql.createPool({
 // 채팅방 메시지 조회 (GET)
 router.get("/chatrooms/:userId/messages", (req, res) => {
   const userId = req.params.userId;
-  console.log(`Fetching messages for userId: ${userId}`);
+  console.log(`Fetching messages for userId: ${userId}`); //콘솔로그
   pool.query(
     "SELECT * FROM messages WHERE sender_id = ? OR receiver_id = ?",
     [userId, userId],

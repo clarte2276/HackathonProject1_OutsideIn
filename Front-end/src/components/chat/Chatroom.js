@@ -118,7 +118,7 @@ const Chatroom = () => {
   const handleSendMessage = async () => {
     if (newMessage.trim() === "") return;
     try {
-      const sender_id = 1; // 실제 사용자 roomId로 대체해야 합니다.
+      const sender_id = 1; // 실제 사용자 roomId로 대체해야 합니다. //직접 지정
       const receiver_id = parseInt(roomId); // 현재 대화 상대방의 roomId로 사용됩니다.
 
       console.log("Sending message:", { sender_id, receiver_id, content: newMessage });

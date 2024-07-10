@@ -6,7 +6,7 @@ const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 const bcrypt = require("bcrypt");
 const db_config = require("./config/db_config.json");
-const cors = require('cors');
+const cors = require('cors'); //추가
 
 const app = express();
 const http = require("http").createServer(app);
