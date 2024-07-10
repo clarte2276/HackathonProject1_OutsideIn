@@ -82,8 +82,10 @@ const Chat = () => {
         {currentPosts.map((item, index) => (
           <CommonTableRow key={index}>
             <CommonTableColumn>
-              <img className="userImg" src={userImg} alt=""></img>
-              <div>{item.nickname}</div>
+              <div className="img_name">
+                <img className="userImg" src={userImg} alt=""></img>
+                <div>{item.nickname}</div>
+              </div>
             </CommonTableColumn>
             <CommonTableColumn>{item.state}</CommonTableColumn>
             <CommonTableColumn>
@@ -101,7 +103,6 @@ const Chat = () => {
           onPageChange={handlePageChange}
         />
       </div>
-      {/* <img className="userImg" src={userImg} alt=""></img> */}
     </>
   );
 };
