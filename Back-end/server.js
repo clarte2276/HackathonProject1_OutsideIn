@@ -6,6 +6,7 @@ const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 const bcrypt = require("bcrypt");
 const db_config = require("./config/db_config.json");
+const cors = require('cors');
 
 const app = express();
 const http = require("http").createServer(app);
@@ -36,6 +37,12 @@ const pool = mysql.createPool({
 // URL을 인코딩하는 코드
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// CORS 설정 업데이트
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'], // 허용할 출처를 추가합니다.
+  credentials: true,
+}));
 
 // 세션 세팅
 app.use(
