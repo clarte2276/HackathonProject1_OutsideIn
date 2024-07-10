@@ -57,6 +57,11 @@ const Chat = () => {
     setCurrentPage(pageNumber);
   };
 
+  const openPopup = (roomId) => {
+    // openPopup 함수 추가
+    openChatroomPopup(roomId); // openChatroomPopup을 호출하도록 수정
+  };
+
   return (
     <>
       <div className="chatTop">
