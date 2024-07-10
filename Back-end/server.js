@@ -7,6 +7,8 @@ const bcrypt = require("bcrypt");
 const db_config = require("./config/db_config.json");
 
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 // MySQL 세션 스토어 옵션
 const sessionStoreOptions = {
@@ -185,6 +187,43 @@ app.post("/process/login", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../Front-end/build", "index.html"));
 });
+
+// 소켓.io 설정
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+
+  socket.on('message-expert', (msg) => {
+    console.log('Received message:', msg);
+
+    const { room_id, sender_index, message } = msg;
+    pool.query(
+      'INSERT INTO messages (room_id, sender_id, content) VALUES (?, ?, ?)',
+      [room_id, sender_index, message],
+      (err, result) => {
+        if (err) {
+          console.error('Message save error:', err);
+        } else {
+          io.to(room_id).emit('message-expert', msg);  // 특정 방에만 메시지를 방송
+        }
+      }
+    );
+  });
+
+  socket.on('join-room', (roomId) => {
+    socket.join(roomId);
+    console.log(`User joined room: ${roomId}`);
+  });
+
+  socket.on('leave-room', (roomId) => {
+    socket.leave(roomId);
+    console.log(`User left room: ${roomId}`);
+  });
+});
+
 
 app.listen(3000, () => {
   console.log("서버가 3000 포트에서 실행 중입니다.");
