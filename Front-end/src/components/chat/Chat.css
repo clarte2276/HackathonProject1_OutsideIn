@@ -6,10 +6,15 @@
   letter-spacing: 1px;
 }
 
-.BoardTop {
+.chatTop {
   display: grid;
   justify-content: center;
   text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.chatmain_body {
+  margin-bottom: 10px;
 }
 
 .active-button,
@@ -39,25 +44,6 @@
   color: rgb(48, 145, 6);
 }
 
-.newboardButton {
-  text-decoration: none;
-  color: white;
-  background-color: rgb(39, 39, 39);
-  padding: 10px;
-  border-radius: 10%;
-}
-
-.newboard {
-  display: flex;
-  justify-content: right;
-  margin: 25px 0px;
-  width: 85%;
-}
-
-.boardmain_body {
-  margin-bottom: 10px;
-}
-
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
   border-style: none !important;
 }
@@ -72,4 +58,11 @@
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+}
+
+.userImg {
+  width: 3rem;
+  height: 3rem;
+  margin: 0px;
+  margin-right: 0.5rem;
 }

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import CommonTable from '../board/boardList/CommonTable';
 import CommonTableColumn from '../board/boardList/CommonTableColumn';
 import CommonTableRow from '../board/boardList/CommonTableRow';
 import CustomPagination from '../board/Pagination';
-import '../board/BoardTap.css';
+import './Chat.css';
 import axios from 'axios';
 import userImg from '../images/userImg.jpg';
 
@@ -34,7 +33,7 @@ const Chat = () => {
   }
   const [dataList, setDataList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10;
+  const postsPerPage = 5;
 
   useEffect(() => {
     axios
@@ -56,21 +55,42 @@ const Chat = () => {
     setCurrentPage(pageNumber);
   };
 
+  const openPopup = (roomId) => {
+    const url = `/Chatroom/${roomId}`;
+    const title = 'popup';
+    const status = 'toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=400,height=500,top=100,left=200';
+    const newWindow = window.open(url, title, status);
+
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = url;
+    form.target = title;
+
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  };
+
   return (
     <>
+      <div className="chatTop">
+        <h1>채팅 대기실</h1>
+        <div className="chatmain_body">이곳은 1:1 채팅 대기실입니다.</div>
+        <div>대화에 참여해 새로운 만남을 경험해 보세요!</div>
+      </div>
       <CommonTable headersName={['닉네임', '상태', '대화하기']}>
         {currentPosts.map((item, index) => (
           <CommonTableRow key={index}>
-            {/* <CommonTableColumn>
-              <Link to={`/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
-                <div className="table_title">{item.title}</div>
-              </Link>
-            </CommonTableColumn> */}
-            <CommonTableColumn>{item.nickname}</CommonTableColumn>
+            <CommonTableColumn>
+              <img className="userImg" src={userImg} alt=""></img>
+              <div>{item.nickname}</div>
+            </CommonTableColumn>
             <CommonTableColumn>{item.state}</CommonTableColumn>
-            <Link to={`/Chatroom/${item.no}`} style={{ textDecoration: 'none' }}>
-              <div>참여</div>
-            </Link>
+            <CommonTableColumn>
+              <button onClick={() => openPopup(item.roomId)}>
+                <div>참여</div>
+              </button>
+            </CommonTableColumn>
           </CommonTableRow>
         ))}
       </CommonTable>
@@ -81,7 +101,7 @@ const Chat = () => {
           onPageChange={handlePageChange}
         />
       </div>
-      <img className="userImg" src={userImg} alt=""></img>
+      {/* <img className="userImg" src={userImg} alt=""></img> */}
     </>
   );
 };

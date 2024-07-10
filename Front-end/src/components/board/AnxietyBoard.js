@@ -30,7 +30,7 @@ const AnxietyBoard = () => {
 
   return (
     <>
-      <div className="Boardtop">
+      <div className="BoardTop">
         <BoardMain title="불안이" body="당신의 불안증상을 공유해주세요."></BoardMain>
         <div className="Boardbar">
           <Boardbar />

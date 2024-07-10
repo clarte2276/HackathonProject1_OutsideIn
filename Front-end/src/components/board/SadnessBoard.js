@@ -30,7 +30,7 @@ const SadnessBoard = () => {
 
   return (
     <>
-      <div className="Boardtop">
+      <div className="BoardTop">
         <BoardMain title="슬픔이" body="당신의 우울증상을 공유해주세요."></BoardMain>
         <div className="Boardbar">
           <Boardbar />
