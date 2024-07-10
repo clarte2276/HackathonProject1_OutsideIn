@@ -77,7 +77,7 @@
   text-shadow: 0px 0px 12px rgb(100, 18, 181, 0.73);
 }
 
-button {
+.ChatIn {
   font-size: 1.05rem;
   width: 3.5rem;
   border-radius: 10%;

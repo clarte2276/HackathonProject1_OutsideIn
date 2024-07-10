@@ -70,7 +70,7 @@ const Chat = () => {
               <div className={getShadowClass(item.state)}>{item.state}</div>
             </CommonTableColumn2>
             <CommonTableColumn2>
-              <button onClick={() => openPopup(item.roomId)}>
+              <button className="ChatIn" onClick={() => openPopup(item.roomId)}>
                 <div>참여</div>
               </button>
             </CommonTableColumn2>
