@@ -39,6 +39,19 @@ const Chat = () => {
     openChatroomPopup(roomId); // openChatroomPopup을 호출하여 팝업 열기
   };
 
+  const getShadowClass = (state) => {
+    switch (state) {
+      case '우울':
+        return 'state_color sadness';
+      case '불안':
+        return 'state_color anxiety';
+      case '강박':
+        return 'state_color fear';
+      default:
+        return 'state_color';
+    }
+  };
+
   return (
     <>
       <div className="chatTop">
@@ -55,7 +68,9 @@ const Chat = () => {
                 <div>{item.nickname}</div>
               </div>
             </CommonTableColumn2>
-            <CommonTableColumn2>{item.state}</CommonTableColumn2>
+            <CommonTableColumn2>
+              <div className={getShadowClass(item.state)}>{item.state}</div>
+            </CommonTableColumn2>
             <CommonTableColumn2>
               <button onClick={() => openPopup(item.roomId)}>
                 <div>참여</div>
