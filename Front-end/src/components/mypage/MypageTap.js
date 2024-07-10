@@ -88,7 +88,7 @@ function MypageTap() {
         lastName,
         firstName,
         nickname: usernickname,
-        password: password,
+        password,
         birth: birthdate,
         gender,
         state,

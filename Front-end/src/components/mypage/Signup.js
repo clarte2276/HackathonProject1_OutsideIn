@@ -127,7 +127,7 @@ function Signup() {
               required
             />
             <input
-              type="password"
+              type="text"
               placeholder="비밀번호"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
