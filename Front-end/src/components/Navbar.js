@@ -1,9 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React from 'react';
 import './Navbar.css';
 import './fontello-f87b823b/css/fontello.css';
 
 function Navbar() {
+  const location = useLocation();
   const navigate = useNavigate();
 
   const checkLogin = async (e) => {
@@ -41,13 +42,13 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar">
-        <Link className="navbarMenu" id="navbar_underline" to="/joy">
+        <Link className={`navbarMenu ${location.pathname === '/joy' ? 'underline' : ''}`} to="/joy">
           Board
         </Link>
-        <Link className="navbarMenu" to="/process/chat">
+        <Link className={`navbarMenu ${location.pathname === '/process/chat' ? 'underline' : ''}`} to="/process/chat">
           Chat
         </Link>
-        <form onSubmit={checkLogin} className="navbarMenu">
+        <form onSubmit={checkLogin} className={`navbarMenu ${location.pathname === '/MyPage' ? 'underline' : ''}`}>
           <button type="submit" className="mypage-button">
             MyPage
           </button>
