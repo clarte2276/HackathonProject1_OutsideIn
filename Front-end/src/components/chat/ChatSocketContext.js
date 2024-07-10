@@ -16,7 +16,7 @@ const ChatSocketProvider = ({ children }) => {
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3005');
+    const newSocket = io('http://localhost:3002');
     setSocket(newSocket);
 
     return () => {
