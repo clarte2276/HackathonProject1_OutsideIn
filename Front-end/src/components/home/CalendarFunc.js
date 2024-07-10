@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import './Calendar.css';
-import { IoCheckmarkOutline } from 'react-icons/io5';
 import moment from 'moment';
 
 function CalendarFunc(props) {

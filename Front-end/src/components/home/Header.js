@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Main.css';
-import { IoCheckmarkOutline } from 'react-icons/io5';
 
 function Header(props) {
   return (

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import "./LoginTap.css";
-import { Link, useNavigate } from "react-router-dom";
-import loginPage from "./images/loginpage.png";
+import React, { useState } from 'react';
+import './LoginTap.css';
+import { Link, useNavigate } from 'react-router-dom';
+import loginPage from '../images/loginpage.png';
 
 function LoginTap() {
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleUserIdChange = (e) => {
@@ -24,10 +24,10 @@ function LoginTap() {
     };
 
     try {
-      const response = await fetch("/process/login", {
-        method: "POST",
+      const response = await fetch('/process/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(loginData),
       });
@@ -35,30 +35,24 @@ function LoginTap() {
       const result = await response.json();
 
       if (result.success) {
-        navigate("/"); // 로그인 성공 시 메인 페이지로 이동
+        navigate('/'); // 로그인 성공 시 메인 페이지로 이동
       } else {
         alert(result.message); // 로그인 실패 메시지 표시
       }
     } catch (error) {
-      console.error("로그인 요청 중 오류 발생:", error);
-      alert("로그인 요청 중 오류가 발생했습니다.");
+      console.error('로그인 요청 중 오류 발생:', error);
+      alert('로그인 요청 중 오류가 발생했습니다.');
     }
   };
 
-  const isLoginFormValid = userId !== "" && password !== "";
+  const isLoginFormValid = userId !== '' && password !== '';
 
   return (
     <div className="LoginPage">
       <h1>Log in</h1>
       <form onSubmit={handleLogin}>
         <div className="btnContent">
-          <input
-            type="text"
-            name="id"
-            placeholder="아이디"
-            value={userId}
-            onChange={handleUserIdChange}
-          />
+          <input type="text" name="id" placeholder="아이디" value={userId} onChange={handleUserIdChange} />
           <input
             type="password"
             name="password"
@@ -67,11 +61,7 @@ function LoginTap() {
             onChange={handleUserPasswordChange}
           />
           <br />
-          <button
-            type="submit"
-            disabled={!isLoginFormValid}
-            className="loginBtn"
-          >
+          <button type="submit" disabled={!isLoginFormValid} className="loginBtn">
             로그인
           </button>
           <br />

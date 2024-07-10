@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import io from 'socket.io-client';
-import SocketContext from './components/page/ChatSocket.js';
+import SocketContext from './components/chat/ChatSocket.js';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
-import Header from './components/Header.js';
-import CheckList from './components/CheckList.js';
-import CalendarFunc from './components/CalendarFunc.js';
-import Board from './components/Board.js';
-import BoardTap from './components/page/BoardTap.js';
-import MypageTap from './components/MypageTap.js';
-import LoginTap from './components/LoginTap.js';
-import Signup from './components/Signup.js';
-import JoyBoard from './components/page/JoyBoard.js';
-import SadnessBoard from './components/page/SadnessBoard.js';
-import AnxietyBoard from './components/page/AnxietyBoard.js';
-import FearBoard from './components/page/FearBoard.js';
-import Chat from './components/page/Chat.js';
-import ChatService from './components/page/ChatService.js';
+import Header from './components/home/Header.js';
+import CheckList from './components/home/CheckList.js';
+import CalendarFunc from './components/home/CalendarFunc.js';
+import Board from './components/home/Board.js';
+import MypageTap from './components/mypage/MypageTap.js';
+import LoginTap from './components/mypage/LoginTap.js';
+import Signup from './components/mypage/Signup.js';
+import JoyBoard from './components/board/JoyBoard.js';
+import SadnessBoard from './components/board/SadnessBoard.js';
+import AnxietyBoard from './components/board/AnxietyBoard.js';
+import FearBoard from './components/board/FearBoard.js';
+import Chat from './components/chat/Chat.js';
+import ChatService from './components/chat/ChatService.js';
 
 const Home = () => {
   return (
@@ -59,7 +58,6 @@ function App() {
             <Route path="/MyPage" element={<MypageTap />} />
             <Route path="/LoginTap" element={<LoginTap />} />
             <Route path="/Signup" element={<Signup />} />
-            <Route path="/joy" element={<JoyBoard />} />
             <Route path="/sadness" element={<SadnessBoard />} />
             <Route path="/anxiety" element={<AnxietyBoard />} />
             <Route path="/Fear" element={<FearBoard />} />

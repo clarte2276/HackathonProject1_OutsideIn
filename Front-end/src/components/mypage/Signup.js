@@ -1,40 +1,31 @@
-import React, { useState } from "react";
-import "./Signup.css";
-import { useNavigate } from "react-router-dom";
-import Select from "react-select";
-import signupPage from "./images/signuppage.png";
+import React, { useState } from 'react';
+import './Signup.css';
+import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
+import signupPage from '../images/signuppage.png';
 
 function Signup() {
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [gender, setGender] = useState("");
-  const [birth, setbirth] = useState("");
-  const [usernickname, setUsernickname] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [state, setState] = useState("");
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [gender, setGender] = useState('');
+  const [birth, setbirth] = useState('');
+  const [usernickname, setUsernickname] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [state, setState] = useState('');
   const navigate = useNavigate();
 
   const handleGenderChange = (selectedOption) => {
-    setGender(selectedOption ? selectedOption.value : "");
+    setGender(selectedOption ? selectedOption.value : '');
   };
 
   const handleStateChange = (selectedOption) => {
-    setState(selectedOption ? selectedOption.value : "");
+    setState(selectedOption ? selectedOption.value : '');
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      gender &&
-      state &&
-      lastName &&
-      firstName &&
-      birth &&
-      usernickname &&
-      username &&
-      password
-    ) {
+    if (gender && state && lastName && firstName && birth && usernickname && username && password) {
       const signupData = {
         lastName,
         firstName,
@@ -47,38 +38,38 @@ function Signup() {
       };
 
       try {
-        const response = await fetch("/process/signup", {
-          method: "POST",
+        const response = await fetch('/process/signup', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(signupData),
         });
         const result = await response.json();
 
         if (result.success) {
-          navigate("/LoginTap");
+          navigate('/LoginTap');
         } else {
           alert(result.message);
         }
       } catch (error) {
-        console.error("회원가입 요청 중 오류 발생:", error);
-        alert("회원가입 요청 중 오류가 발생했습니다.");
+        console.error('회원가입 요청 중 오류 발생:', error);
+        alert('회원가입 요청 중 오류가 발생했습니다.');
       }
     } else {
-      alert("모든 정보를 입력해주세요.");
+      alert('모든 정보를 입력해주세요.');
     }
   };
 
   const genderOptions = [
-    { value: "남성", label: "남성" },
-    { value: "여성", label: "여성" },
+    { value: '남성', label: '남성' },
+    { value: '여성', label: '여성' },
   ];
 
   const stateOptions = [
-    { value: "우울", label: "저는 지금 우울해요" },
-    { value: "불안", label: "저는 지금 불안해요" },
-    { value: "강박", label: "저는 지금 강박이 있어요" },
+    { value: '우울', label: '저는 지금 우울해요' },
+    { value: '불안', label: '저는 지금 불안해요' },
+    { value: '강박', label: '저는 지금 강박이 있어요' },
   ];
 
   return (

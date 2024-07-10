@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
 import './BoardTap.css';
 
 const CustomPagination = ({ currentPage, totalPages, onPageChange }) => {

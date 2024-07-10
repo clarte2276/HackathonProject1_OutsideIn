@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import CommonTable from '../table/CommonTable';
-import CommonTableColumn from '../table/CommonTableColumn';
-import CommonTableRow from '../table/CommonTableRow';
-import { postList } from '../../Data';
+import { Link } from 'react-router-dom';
+import CommonTable from './boardList/CommonTable';
+import CommonTableColumn from './boardList/CommonTableColumn';
+import CommonTableRow from './boardList/CommonTableRow';
 import Boardbar from './Boardbar';
 import BoardMain from './BoardMain';
 import CustomPagination from './Pagination';
 import NewBoardButton from './NewBoardButton';
 import './BoardTap.css';
+import axios from 'axios';
 
-const SadnessBoard = () => {
-  const { page } = useParams();
+const JoyBoard = () => {
   const [dataList, setDataList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
 
   useEffect(() => {
-    setDataList(postList);
+    // 백엔드에서 게시글 목록을 가져옴
+    axios
+      .post('/joy')
+      .then((response) => {
+        console.log('응답 데이터:', response.data); // 응답 데이터 출력
+        setDataList(response.data);
+      })
+      .catch((error) => {
+        console.error('There was an error fetching the posts!', error);
+      });
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -31,7 +39,7 @@ const SadnessBoard = () => {
   return (
     <>
       <div className="Boardtop">
-        <BoardMain title="슬픔이" body="당신의 우울증상을 공유해주세요."></BoardMain>
+        <BoardMain title="기쁨이" body="본인의 챌린지 및 치료 후기를 적어주세요!"></BoardMain>
         <div className="Boardbar">
           <Boardbar />
         </div>
@@ -44,13 +52,13 @@ const SadnessBoard = () => {
                 <div className="table_title">{item.title}</div>
               </Link>
             </CommonTableColumn>
-            <CommonTableColumn>{item.name}</CommonTableColumn>
-            <CommonTableColumn>{item.createDate}</CommonTableColumn>
-            <CommonTableColumn>{item.readCount}</CommonTableColumn>
+            <CommonTableColumn>{item.nickname}</CommonTableColumn>
+            <CommonTableColumn>{item.created_date}</CommonTableColumn>
+            <CommonTableColumn>{item.viewCount}</CommonTableColumn>
           </CommonTableRow>
         ))}
       </CommonTable>
-      <NewBoardButton emotion="sadness" />
+      <NewBoardButton emotion="joy" />
       <div className="pagination">
         <CustomPagination
           currentPage={currentPage}
@@ -62,4 +70,4 @@ const SadnessBoard = () => {
   );
 };
 
-export default SadnessBoard;
+export default JoyBoard;
