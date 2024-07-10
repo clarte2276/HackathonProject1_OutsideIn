@@ -1,5 +1,3 @@
-// 소켓 연결
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import io from "socket.io-client";
 
@@ -13,10 +11,10 @@ const ChatSocketProvider = ({ children }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const [socket, setSocket] = useState(null);
-  const [newMessage, setNewMessage] = useState('');
+  const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3002');
+    const newSocket = io("http://localhost:3000");
     setSocket(newSocket);
 
     return () => {
@@ -28,11 +26,11 @@ const ChatSocketProvider = ({ children }) => {
     if (!socket) return;
 
     const handleConnect = () => {
-      console.log('connected to server');
+      console.log("connected to server");
     };
 
     const handleDisconnect = () => {
-      console.log('Disconnected from server');
+      console.log("Disconnected from server");
     };
 
     const handleMessage = (message) => {
@@ -43,28 +41,32 @@ const ChatSocketProvider = ({ children }) => {
       setUsers(userList);
     };
 
-    socket.on('connect', handleConnect);
-    socket.on('disconnect', handleDisconnect);
-    socket.on('message', handleMessage);
-    socket.on('userList', handleUserList);
+    socket.on("connect", handleConnect);
+    socket.on("disconnect", handleDisconnect);
+    socket.on("message", handleMessage);
+    socket.on("userList", handleUserList);
 
     return () => {
-      socket.off('connect', handleConnect);
-      socket.off('disconnect', handleDisconnect);
-      socket.off('message', handleMessage);
-      socket.off('userList', handleUserList);
+      socket.off("connect", handleConnect);
+      socket.off("disconnect", handleDisconnect);
+      socket.off("message", handleMessage);
+      socket.off("userList", handleUserList);
     };
   }, [socket]);
 
   const sendMessage = () => {
-    if (newMessage.trim() === '') return;
-    socket.emit('sendMessage', newMessage);
-    setNewMessage('');
+    if (newMessage.trim() === "") return;
+    socket.emit("sendMessage", newMessage);
+    setNewMessage("");
   };
 
   const value = { messages, users, sendMessage, newMessage, setNewMessage };
 
-  return <ChatSocketContext.Provider value={value}>{children}</ChatSocketContext.Provider>;
+  return (
+    <ChatSocketContext.Provider value={value}>
+      {children}
+    </ChatSocketContext.Provider>
+  );
 };
 
 export { ChatSocketProvider, ChatSocketContext };
