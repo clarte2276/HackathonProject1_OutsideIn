@@ -14,9 +14,7 @@ const Chatroom = () => {
     const fetchMessages = async () => {
       try {
         console.log(`Fetching messages for roomId: ${roomId}`);
-        const response = await axios.get(
-          `http://localhost:3000/chatrooms/${roomId}/messages`
-        );
+        const response = await axios.get(`/chatrooms/${roomId}/messages`);
         console.log("Fetched messages:", response.data);
         setMessages(response.data);
       } catch (error) {
@@ -42,14 +40,11 @@ const Chatroom = () => {
 
       console.log("Sending message:", { receiver_id, content: newMessage });
 
-      // 백엔드에 새 메시지 보내기
-      const response = await axios.post(
-        `http://localhost:3000/chatrooms/${roomId}/messages`,
-        {
-          receiver_id,
-          content: newMessage,
-        }
-      );
+      // 백엔드에 새 메시지 보내기, 앞에 로컬호스트 링크 뻄
+      const response = await axios.post(`/chatrooms/${roomId}/messages`, {
+        receiver_id,
+        content: newMessage,
+      });
 
       console.log("Response:", response);
 
