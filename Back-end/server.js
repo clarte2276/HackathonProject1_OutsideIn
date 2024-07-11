@@ -138,7 +138,6 @@ app.post("/process/signup", async (req, res) => {
 });
 
 // 로그인 구현
-// 로그인 구현
 app.post("/process/login", (req, res) => {
   console.log("/process/login 호출됨", req.body);
   const paramID = req.body.id;
@@ -204,42 +203,6 @@ app.get("*", (req, res) => {
 
 app.post("/Chatroom/:roomId", (req, res) => {
   res.sendFile(path.join(__dirname, "../Front-end/build", "index.html"));
-});
-
-// 소켓.io 설정
-io.on("connection", (socket) => {
-  console.log("a user connected");
-
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
-
-  socket.on("message-expert", (msg) => {
-    console.log("Received message:", msg);
-
-    const { room_id, sender_index, message } = msg;
-    pool.query(
-      "INSERT INTO messages (room_id, sender_id, content) VALUES (?, ?, ?)",
-      [room_id, sender_index, message],
-      (err, result) => {
-        if (err) {
-          console.error("Message save error:", err);
-        } else {
-          io.to(room_id).emit("message-expert", msg); // 특정 방에만 메시지를 방송
-        }
-      }
-    );
-  });
-
-  socket.on("join-room", (roomId) => {
-    socket.join(roomId);
-    console.log(`User joined room: ${roomId}`);
-  });
-
-  socket.on("leave-room", (roomId) => {
-    socket.leave(roomId);
-    console.log(`User left room: ${roomId}`);
-  });
 });
 
 app.listen(3000, () => {
