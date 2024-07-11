@@ -79,7 +79,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './Chatroom.css';
+import './Chatting.css';
 
 const Chatroom = () => {
   const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.
@@ -114,7 +114,7 @@ const Chatroom = () => {
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
     try {
-      const sender_id = 1; // 실제 사용자 roomId로 대체해야 합니다. //직접 지정
+      const sender_id = 1;
       const receiver_id = parseInt(roomId); // 현재 대화 상대방의 roomId로 사용됩니다.
 
       console.log('Sending message:', { sender_id, receiver_id, content: newMessage });
@@ -146,7 +146,7 @@ const Chatroom = () => {
   return (
     <div className="chattingRoom">
       <h2>Chatroom {roomId}</h2>
-      <div className="messageContent">
+      <div>
         {roomMessages.map((msg, index) => (
           <p key={index} className={msg.sender_id === 1 ? 'my-message' : 'other-message'}>
             {msg.content}
