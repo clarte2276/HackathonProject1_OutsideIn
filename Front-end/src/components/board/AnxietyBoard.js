@@ -40,7 +40,7 @@ const AnxietyBoard = () => {
         {currentPosts.map((item, index) => (
           <CommonTableRow key={index}>
             <CommonTableColumn>
-              <Link to={`/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/anxiety/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
                 <div className="table_title">{item.title}</div>
               </Link>
             </CommonTableColumn>

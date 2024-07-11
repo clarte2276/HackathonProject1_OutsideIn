@@ -65,7 +65,7 @@ const JoyBoard = () => {
         {currentPosts.map((item, index) => (
           <CommonTableRow key={index}>
             <CommonTableColumn>
-              <Link to={`/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/joy/PostView/${item.no}`} style={{ textDecoration: 'none' }}>
                 <div className="table_title">{item.title}</div>
               </Link>
             </CommonTableColumn>
