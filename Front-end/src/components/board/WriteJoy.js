@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './BoardTap.css';
 import axios from 'axios';
 
-const WriteJoy = ({ onPostSave }) => {
+function WriteJoy() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { nextNo } = location.state || {};
 
   const [board, setBoard] = useState({
     title: '',
@@ -21,20 +23,26 @@ const WriteJoy = ({ onPostSave }) => {
     });
   };
 
-  const saveBoard = async () => {
+  const saveBoard = async (event) => {
+    event.preventDefault();
     const newPost = {
-      no: 5, // 새로운 게시글의 번호
-      title: title,
-      nickname: body,
+      no: nextNo, // 새로운 게시글의 번호
+      title,
+      nickname: 0,
+      content: body,
       created_date: new Date().toISOString(),
       viewCount: 0,
     };
 
-    await axios.post(`/joy`, newPost).then((res) => {
+    try {
+      await axios.post(`/joy`, newPost);
       alert('등록되었습니다.');
-      onPostSave(newPost); // 새로운 게시글을 전달하여 리스트 갱신
-      navigate('/joy');
-    });
+      console.log('현재 데이터:', newPost);
+      navigate('/joy', { state: { newPost } });
+    } catch (error) {
+      console.error('Error saving post:', error);
+      alert('글을 저장하는 도중 오류가 발생했습니다.');
+    }
   };
 
   const backToList = () => {
@@ -42,23 +50,23 @@ const WriteJoy = ({ onPostSave }) => {
   };
 
   return (
-    <div>
+    <form onSubmit={saveBoard}>
       <div>
         <span>제목</span>
-        <input type="text" name="title" value={title} onChange={onChange} />
+        <input type="text" name="title" placeholder="제목" value={title} onChange={onChange} />
       </div>
       <br />
       <div>
         <span>내용</span>
-        <textarea name="body" cols="30" rows="10" value={body} onChange={onChange}></textarea>
+        <textarea name="body" placeholder="내용" value={body} onChange={onChange}></textarea>
       </div>
       <br />
-      <div>
-        <button onClick={backToList}>취소</button>
-        <button onClick={saveBoard}>등록하기</button>
-      </div>
-    </div>
+      <button type="button" onClick={backToList}>
+        취소
+      </button>
+      <input type="submit" value="등록하기"></input>
+    </form>
   );
-};
+}
 
 export default WriteJoy;

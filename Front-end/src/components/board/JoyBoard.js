@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CommonTable from './boardList/CommonTable';
 import CommonTableColumn from './boardList/CommonTableColumn';
 import CommonTableRow from './boardList/CommonTableRow';
@@ -14,6 +14,8 @@ const JoyBoard = () => {
   const [dataList, setDataList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const fetchData = () => {
     // 백엔드에서 게시글 목록을 가져옴
@@ -32,8 +34,15 @@ const JoyBoard = () => {
     fetchData();
   }, []);
 
-  const handlePostSave = (newPost) => {
-    setDataList([...dataList, newPost]);
+  useEffect(() => {
+    if (location.state && location.state.newPost) {
+      console.log('새 게시글 추가:', location.state.newPost);
+      setDataList((prevDataList) => [location.state.newPost, ...prevDataList]);
+    }
+  }, [location.state]);
+
+  const getNextNo = () => {
+    return dataList.length > 0 ? Math.max(...dataList.map((post) => post.no)) + 1 : 1;
   };
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -66,7 +75,7 @@ const JoyBoard = () => {
           </CommonTableRow>
         ))}
       </CommonTable>
-      <NewBoardButton emotion="joy" />
+      <NewBoardButton emotion="joy" nextNo={getNextNo()} />
       <div className="pagination">
         <CustomPagination
           currentPage={currentPage}
