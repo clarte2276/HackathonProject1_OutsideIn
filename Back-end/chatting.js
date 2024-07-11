@@ -34,7 +34,7 @@ router.get("/chatrooms/:userId/messages", (req, res) => {
   );
 });
 // 새로운 메시지 전송 (POST)
-// 새로운 메시지 전송 (POST)
+
 router.post("/chatrooms/:userId/messages", (req, res) => {
   const my_roomid = req.session.user.roomid;
   console.log(my_roomid);
