@@ -18,7 +18,7 @@ const pool = mysql.createPool({
   debug: false,
 });
 
-// 로그인 여부 확인 미들웨어
+// 로그인 여부 확인 미들웨어ㅁㄴㅇ
 const checkLogin = (req, res, next) => {
   if (req.session && req.session.user) {
     next();

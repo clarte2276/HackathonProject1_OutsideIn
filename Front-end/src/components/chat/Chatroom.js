@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Chatting.css";
 
 const Chatroom = () => {
-  const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.
+  const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.ㅁㄴㅇ
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [roomMessages, setRoomMessages] = useState([]);

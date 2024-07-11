@@ -35,7 +35,7 @@ function MypageTap() {
       setLastName(userData.Lastname);
       setFirstName(userData.Firstname);
       setUsernickname(userData.nickname);
-      setUsername(userData.id); // 아이디 값 변경 불가
+      setUsername(userData.id); // 아이디 값 변경 불가ㅁㄴㅇ
       setPassword(userData.password);
       setBirthdate(userData.birth);
       setGender(userData.gender);

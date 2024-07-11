@@ -18,7 +18,7 @@ router.get("/chatrooms/:userId/messages", (req, res) => {
   const my_roomid = req.session.user.roomid;
   console.log(my_roomid);
   const userId = req.params.userId;
-  console.log(`Fetching messages for userId: ${userId}`); //콘솔로그
+  console.log(`Fetching messages for userId: ${userId}`); //콘솔로그ㅁㄴㅇ
   pool.query(
     "SELECT * FROM messages WHERE sender_id = ? OR receiver_id = ?",
     [userId, userId],
