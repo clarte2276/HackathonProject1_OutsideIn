@@ -84,7 +84,7 @@ router.post('/BoardWrite/joy', async (req, res) => {
 });
 
 // 게시글 상세 페이지 및 댓글 조회
-router.get('/view_post/:no', (req, res) => {
+router.get('/joy/PostView/:no', (req, res) => {
   const postId = req.params.no;
 
   pool.getConnection((err, conn) => {
@@ -113,12 +113,16 @@ router.get('/view_post/:no', (req, res) => {
           res.status(500).send('서버 오류');
           return;
         }
-
-        res.render('view_post', {
+        res.json({
           post: postResult[0],
           comments: commentResult, // comments 배열을 전달
           session: req.session, // 세션 전달
         });
+        // res.render('view_post', {
+        //   post: postResult[0],
+        //   comments: commentResult, // comments 배열을 전달
+        //   session: req.session, // 세션 전달
+        // });
       });
     });
   });
