@@ -6,7 +6,7 @@ const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 const bcrypt = require("bcrypt");
 const db_config = require("./config/db_config.json");
-const cors = require('cors'); //추가
+const cors = require("cors"); //추가
 
 const app = express();
 const http = require("http").createServer(app);
@@ -39,10 +39,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // CORS 설정 업데이트
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'], // 허용할 출처를 추가합니다.
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"], // 허용할 출처를 추가합니다.
+    credentials: true,
+  })
+);
 
 // 세션 세팅
 app.use(
@@ -136,6 +138,7 @@ app.post("/process/signup", async (req, res) => {
 });
 
 // 로그인 구현
+// 로그인 구현
 app.post("/process/login", (req, res) => {
   console.log("/process/login 호출됨", req.body);
   const paramID = req.body.id;
@@ -150,7 +153,7 @@ app.post("/process/login", (req, res) => {
       return;
     }
     conn.query(
-      "SELECT id, nickname, password FROM users WHERE id = ?",
+      "SELECT id, nickname, password, roomid FROM users WHERE id = ?",
       [paramID],
       async (err, rows) => {
         conn.release();
@@ -172,6 +175,7 @@ app.post("/process/login", (req, res) => {
             req.session.user = {
               id: user.id,
               nickname: user.nickname,
+              roomid: user.roomid, // room_id 추가
               authorized: true,
             };
             res.json({ success: true });
