@@ -64,9 +64,9 @@ function Board(props) {
                 <div key={i} className="Board_body">
                   <h3>{dataList[i].title}</h3>
                   <div className="Board_body_body">
-                    {dataList[i].nickname.length > 10
-                      ? `${dataList[i].nickname.substring(0, 10)}...`
-                      : dataList[i].nickname}
+                    {dataList[i].content.length > 10
+                      ? `${dataList[i].content.substring(0, 10)}...`
+                      : dataList[i].content}
                   </div>
                   <div>{i === 0 && <div className="BorderLine"></div>}</div>
                 </div>
