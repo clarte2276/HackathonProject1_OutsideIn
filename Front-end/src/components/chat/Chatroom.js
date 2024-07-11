@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import "./Chatting.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import './Chatting.css';
 
 const Chatroom = () => {
-  const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.ㅁㄴㅇ
+  const { roomId } = useParams(); // roomId는 사실상 userId로 사용할 것입니다.
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState('');
   const [roomMessages, setRoomMessages] = useState([]);
 
   useEffect(() => {
@@ -15,10 +15,10 @@ const Chatroom = () => {
       try {
         console.log(`Fetching messages for roomId: ${roomId}`);
         const response = await axios.get(`/chatrooms/${roomId}/messages`);
-        console.log("Fetched messages:", response.data);
+        console.log('Fetched messages:', response.data);
         setMessages(response.data);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error('Error fetching messages:', error);
       }
     };
 
@@ -27,26 +27,24 @@ const Chatroom = () => {
 
   useEffect(() => {
     if (messages.length) {
-      setRoomMessages(
-        messages.filter((msg) => msg.receiver_id === parseInt(roomId))
-      );
+      setRoomMessages(messages.filter((msg) => msg.receiver_id === parseInt(roomId)));
     }
   }, [messages, roomId]);
 
   const handleSendMessage = async () => {
-    if (newMessage.trim() === "") return;
+    if (newMessage.trim() === '') return;
     try {
       const receiver_id = parseInt(roomId); // 현재 대화 상대방의 roomId로 사용됩니다.
 
-      console.log("Sending message:", { receiver_id, content: newMessage });
+      console.log('Sending message:', { receiver_id, content: newMessage });
 
-      // 백엔드에 새 메시지 보내기, 앞에 로컬호스트 링크 뻄
+      // 백엔드에 새 메시지 보내기, 앞에 로컬호스트 링크 뺌
       const response = await axios.post(`/chatrooms/${roomId}/messages`, {
         receiver_id,
         content: newMessage,
       });
 
-      console.log("Response:", response);
+      console.log('Response:', response);
 
       // 메시지를 성공적으로 보낸 후 메시지 목록 업데이트
       setMessages((prevMessages) => [
@@ -54,11 +52,12 @@ const Chatroom = () => {
         {
           receiver_id,
           content: newMessage,
+          isMyMessage: true,
         },
       ]);
-      setNewMessage("");
+      setNewMessage('');
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error('Error sending message:', error);
     }
   };
 
@@ -67,10 +66,7 @@ const Chatroom = () => {
       <h2>Chatroom {roomId}</h2>
       <div>
         {roomMessages.map((msg, index) => (
-          <p
-            key={index}
-            className={msg.sender_id === 1 ? "my-message" : "other-message"}
-          >
+          <p key={index} className={msg.isMyMessage ? 'my-message' : 'other-message'}>
             {msg.content}
           </p>
         ))}
